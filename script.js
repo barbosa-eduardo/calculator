@@ -1,16 +1,14 @@
-let number1 = 0;
-let number2 = 0;
-let operator = "";
-
+let numbers = [];
+let operators = [];
 let displayValue = "";
-const display = document.querySelector(".display");
-const numbers = Array.from(document.querySelectorAll(".number"));
+const displayDiv = document.querySelector(".display");
+const numbersBtn = Array.from(document.querySelectorAll(".number"));
 
-numbers.forEach((num) => {
+numbersBtn.forEach((num) => {
     num.addEventListener("click", () => {
-        addToDisplay(num.innerText);
-    })
-})
+        addNumberToDisplay(num.innerText);
+    });
+});
 
 function operate(operator, number1, number2) {
     switch (operator) {
@@ -24,26 +22,30 @@ function operate(operator, number1, number2) {
             return divide(number1, number2);
         default:
             return "Invalid operator.";
-    }
-}
+    };
+};
 
 function add(a, b) {
     return a + b;
-}
+};
 
 function subtract(a, b) {
     return a - b;
-}
+};
 
 function multiply(a, b) {
     return a * b;
-}
+};
 
 function divide(a, b) {
     return a / b;
-}
+};
 
-function addToDisplay(string) {
+function addNumberToDisplay(string) {
     displayValue += string;
-    display.textContent = displayValue;
-}
+    displayDiv.textContent = displayValue;
+};
+
+function addOperator() {
+
+};
