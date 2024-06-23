@@ -99,7 +99,12 @@ function setOperator(inputOperator) {
 };
 
 function updateDisplay() {
-    calculatorDisplay.innerText = displayNumber;
+    if (displayNumber.length > 16) {
+        reset();
+        calculatorDisplay.innerText = "OVERFLOW";
+    } else {
+        calculatorDisplay.innerText = displayNumber;
+    }
 };
 
 function moveToNextNumber() {
