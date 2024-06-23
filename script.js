@@ -82,7 +82,8 @@ function moveToNextNumber() {
     if (displayNumber != "") {
         let value = 0;
         if (displayNumber.includes(".")) {
-            value = Number.parseFloat(displayNumber).toFixed(2);
+            let valueString = Number.parseFloat(displayNumber).toFixed(2);
+            value = Number.parseFloat(valueString);
         } else {
             value = Number.parseInt(displayNumber);
         };
@@ -126,15 +127,23 @@ function operate() {
             result = multiply();
             break;
         case '/':
+            if (numbers[1] == 0) {
+                displayError();
+                return;
+            }
             result = divide();
             break;
         case '%':
+            if (numbers[1] == 0) {
+                displayError();
+                return;
+            }
             result = remainder()
             break;
     };
     numbers = [result];
     operator = "";
-    displayNumber = result;
+    displayNumber = result.toFixed(2);
     updateDisplay();
     displayNumber = "";
     return result;
@@ -163,3 +172,8 @@ function remainder() {
     let result = numbers[0] % numbers[1];
     return result;
 };
+
+function displayError() {
+    reset();
+    calculatorDisplay.innerText = "ERROR";
+}
