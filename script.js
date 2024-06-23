@@ -1,19 +1,33 @@
-const numbers = [];
-let operator = "";
 const DIGITS = "0123456789";
 const OPERATORS = "+-*/%";
+const numbers = [];
+let operator = "";
+let displayNumber = "";
 
 document.querySelectorAll(".number").forEach((btn) => {
     btn.addEventListener("click", () => {
         // Adicionar digito ao display
+        let btnDigit = btn.innerText;
+        addDigit(btnDigit);
     });
 });
 
 document.querySelectorAll(".operator").forEach((btn) => {
     btn.addEventListener("click", () => {
         // Definir operador da equacao
+        // let btnOperator = btn.innerText;
+        // setOperator(btnOperator);
     });
 });
+
+function addDigit(digit) {
+    if (!DIGITS.includes(digit)) {
+        return;
+    }
+    displayNumber += digit;
+    console.log(displayNumber);
+    // updateDisplay();
+}
 
 function operate() {
     let result;
