@@ -67,6 +67,7 @@ function operate() {
             result = remainder()
             break;
     };
+    numbers = [result];
     return result
 };
 
