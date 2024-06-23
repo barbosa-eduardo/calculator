@@ -1,6 +1,6 @@
 const DIGITS = "0123456789";
 const OPERATORS = "+-*/%";
-const FUNCTIONS = ["AC", "+/-", ".", "="];
+const FUNCTIONS = ["AC", "+/-", ".", "DEL", "="];
 let numbers = [];
 let operator = "";
 let displayNumber = "";
@@ -49,6 +49,9 @@ function input(string) {
             case ".":
                 addFloatingPoint();
                 break;
+            case "DEL":
+                deleteLastDigit();
+                break;
             case "=":
                 if (numbers.length >= 2 || (numbers.length >= 1 && displayNumber != "")){
                     moveToNextNumber();
@@ -66,6 +69,11 @@ function addDigit(inputDigit) {
     displayNumber += inputDigit;
     updateDisplay();
 };
+
+function deleteLastDigit() {
+    displayNumber = displayNumber.slice(0, displayNumber.length-1);
+    updateDisplay();
+}
 
 function setOperator(inputOperator) {
     if (!OPERATORS.includes(inputOperator)) {
