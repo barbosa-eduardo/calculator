@@ -29,7 +29,7 @@ function operate() {
             result = divide();
             break;
         case '%':
-            result = reamainder()
+            result = remainder()
             break;
     };
     return result
@@ -50,6 +50,11 @@ function multiply() {
 };
 
 function divide() {
-    let result = numbers[0] + numbers[1];
+    let result = numbers[0] / numbers[1];
     return result;
 };
+
+function remainder() {
+    let result = numbers[0] % numbers[1];
+    return result;
+}
