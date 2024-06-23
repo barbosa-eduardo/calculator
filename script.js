@@ -1,51 +1,55 @@
-let numbers = [];
-let operators = [];
-let displayValue = "";
-const displayDiv = document.querySelector(".display");
-const numbersBtn = Array.from(document.querySelectorAll(".number"));
+const numbers = [];
+let operator = "";
 
-numbersBtn.forEach((num) => {
-    num.addEventListener("click", () => {
-        addNumberToDisplay(num.innerText);
+document.querySelectorAll(".number").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        // Adicionar digito ao display
     });
 });
 
-function operate(operator, number1, number2) {
+document.querySelectorAll(".operator").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        // Definir operador da equacao
+    });
+});
+
+function operate() {
+    let result;
     switch (operator) {
         case '+':
-            return add(number1, number2);
+            result = add();
+            break;
         case '-':
-            return subtract(number1, number2);
+            result = subtract();
+            break;
         case '*':
-            return multiply('*');
+            result = multiply();
+            break;
         case '/':
-            return divide(number1, number2);
-        default:
-            return "Invalid operator.";
+            result = divide();
+            break;
+        case '%':
+            result = reamainder()
+            break;
     };
+    return result
 };
 
-function add(a, b) {
-    return a + b;
+function add() {
+    let result = numbers[0] + numbers[1];
+    return result;
 };
 
-function subtract(a, b) {
-    return a - b;
+function subtract() {
+    let result = numbers[0] - numbers[1];
+    return result;};
+
+function multiply() {
+    let result = numbers[0] * numbers[1];
+    return result;
 };
 
-function multiply(a, b) {
-    return a * b;
-};
-
-function divide(a, b) {
-    return a / b;
-};
-
-function addNumberToDisplay(string) {
-    displayValue += string;
-    displayDiv.textContent = displayValue;
-};
-
-function addOperator() {
-
+function divide() {
+    let result = numbers[0] + numbers[1];
+    return result;
 };
