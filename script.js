@@ -9,7 +9,7 @@ document.querySelectorAll(".number").forEach((btn) => {
     btn.addEventListener("click", () => {
         // Adicionar digito ao display
         let btnDigit = btn.innerText;
-        addDigit(btnDigit);
+        input(btnDigit);
     });
 });
 
@@ -17,16 +17,23 @@ document.querySelectorAll(".operator").forEach((btn) => {
     btn.addEventListener("click", () => {
         // Definir operador da equacao
         let btnOperator = btn.innerText;
-        setOperator(btnOperator);
+        input(btnOperator);
     });
 });
+
+function input(string) {
+    if (DIGITS.includes(string)) {
+        addDigit(string);
+    } else if (OPERATORS.includes(string)) {
+        setOperator(string);
+    }
+}
 
 function addDigit(inputDigit) {
     if (!DIGITS.includes(inputDigit)) {
         return;
     }
     displayNumber += inputDigit;
-    console.log(displayNumber);
     updateDisplay();
 }
 
