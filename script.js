@@ -2,7 +2,7 @@ let number1 = 0;
 let number2 = 0;
 let operator = "+";
 
-function operate(number1, number2, operator) {
+function operate(operator, number1, number2) {
     switch (operator) {
         case '+':
             return add(number1, number2);
