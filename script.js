@@ -1,3 +1,22 @@
+let number1 = 0;
+let number2 = 0;
+let operator = "+";
+
+function operate(number1, number2, operator) {
+    switch (operator) {
+        case '+':
+            return add(number1, number2);
+        case '-':
+            return subtract(number1, number2);
+        case '*':
+            return multiply('*');
+        case '/':
+            return divide(number1, number2);
+        default:
+            return "Invalid operator.";
+    }
+}
+
 function add(a, b) {
     return a + b;
 }
