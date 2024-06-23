@@ -1,5 +1,6 @@
 const DIGITS = "0123456789";
 const OPERATORS = "+-*/%";
+const FUNCTIONS = ["AC", "+/-", ".", "="];
 let numbers = [];
 let operator = "";
 let displayNumber = "";
@@ -21,6 +22,11 @@ document.querySelectorAll(".operator").forEach((btn) => {
     });
 });
 
+document.querySelectorAll(".function").forEach((btn) => {
+    let btnFunction = btn.innerText;
+    input(btnFunction);
+})
+
 function input(string) {
     if (DIGITS.includes(string)) {
         addDigit(string);
@@ -30,6 +36,21 @@ function input(string) {
             operate();
         }
         setOperator(string);
+    } else if (FUNCTIONS.includes(string)) {
+        switch (string) {
+            case "AC":
+                reset();
+                break;
+            case "+/-":
+                invertSignal();
+                break;
+            case ".":
+                addFloatingPoint();
+                break;
+            case "=":
+                moveToNextNumber();
+                operate();
+        }
     }
 }
 
