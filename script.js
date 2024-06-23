@@ -1,6 +1,6 @@
 const DIGITS = "0123456789";
 const OPERATORS = "+-*/%";
-const numbers = [];
+let numbers = [];
 let operator = "";
 let displayNumber = "";
 const calculatorDisplay = document.querySelector(".display");
@@ -25,6 +25,10 @@ function input(string) {
     if (DIGITS.includes(string)) {
         addDigit(string);
     } else if (OPERATORS.includes(string)) {
+        moveToNextNumber();
+        if (operator != "" && numbers.length >= 2) {
+            operate();
+        }
         setOperator(string);
     }
 }
@@ -48,6 +52,13 @@ function updateDisplay() {
     calculatorDisplay.innerText = displayNumber;
 }
 
+function moveToNextNumber() {
+    if (displayNumber != "") {
+        numbers.push(Number.parseInt(displayNumber));
+        displayNumber = "";
+    }
+}
+
 function operate() {
     let result;
     switch (operator) {
@@ -68,6 +79,10 @@ function operate() {
             break;
     };
     numbers = [result];
+    operator = "";
+    displayNumber = result;
+    updateDisplay();
+    displayNumber = "";
     return result
 };
 
