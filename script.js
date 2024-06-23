@@ -192,7 +192,7 @@ function divide() {
 };
 
 function percentage() {
-    let result = numbers[0] * (numbers[1] / 100);
+    let result = numbers[1] * (numbers[0] / 100);
     return result;
 };
 
