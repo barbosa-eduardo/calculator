@@ -1,5 +1,7 @@
 const numbers = [];
 let operator = "";
+const DIGITS = "0123456789";
+const OPERATORS = "+-*/%";
 
 document.querySelectorAll(".number").forEach((btn) => {
     btn.addEventListener("click", () => {
