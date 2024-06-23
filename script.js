@@ -3,6 +3,7 @@ const OPERATORS = "+-*/%";
 const numbers = [];
 let operator = "";
 let displayNumber = "";
+const calculatorDisplay = document.querySelector(".display");
 
 document.querySelectorAll(".number").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -26,7 +27,11 @@ function addDigit(digit) {
     }
     displayNumber += digit;
     console.log(displayNumber);
-    // updateDisplay();
+    updateDisplay();
+}
+
+function updateDisplay() {
+    calculatorDisplay.innerText = displayNumber;
 }
 
 function operate() {
