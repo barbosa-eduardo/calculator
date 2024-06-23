@@ -26,8 +26,8 @@ document.querySelectorAll(".function").forEach((btn) => {
     btn.addEventListener("click", () => {
         let btnFunction = btn.innerText;
         input(btnFunction);    
-    })
-})
+    });
+});
 
 function input(string) {
     if (DIGITS.includes(string)) {
@@ -36,7 +36,7 @@ function input(string) {
         moveToNextNumber();
         if (operator != "" && numbers.length >= 2) {
             operate();
-        }
+        };
         setOperator(string);
     } else if (FUNCTIONS.includes(string)) {
         alert(string);
@@ -54,42 +54,51 @@ function input(string) {
                 moveToNextNumber();
                 operate();
                 break;
-        }
-    }
-}
+        };
+    };
+};
 
 function addDigit(inputDigit) {
     if (!DIGITS.includes(inputDigit)) {
         return;
-    }
+    };
     displayNumber += inputDigit;
     updateDisplay();
-}
+};
 
 function setOperator(inputOperator) {
     if (!OPERATORS.includes(inputOperator)) {
         return;
-    }
+    };
     operator = inputOperator;
-}
+};
 
 function updateDisplay() {
     calculatorDisplay.innerText = displayNumber;
-}
+};
 
 function moveToNextNumber() {
     if (displayNumber != "") {
         numbers.push(Number.parseInt(displayNumber));
         displayNumber = "";
-    }
-}
+    };
+};
 
 function reset() {
     displayNumber = "";
     operator = "";
     numbers = [];
     updateDisplay();
-}
+};
+
+function invertSignal() {
+    if (displayNumber[0] != "-") {
+        displayNumber = "-" + displayNumber;
+    } else {
+        displayNumber = displayNumber.slice(1, displayNumber.length);
+    }
+    updateDisplay();
+};
 
 function operate() {
     let result;
@@ -115,7 +124,7 @@ function operate() {
     displayNumber = result;
     updateDisplay();
     displayNumber = "";
-    return result
+    return result;
 };
 
 function add() {
@@ -140,4 +149,4 @@ function divide() {
 function remainder() {
     let result = numbers[0] % numbers[1];
     return result;
-}
+};
