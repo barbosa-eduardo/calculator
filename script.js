@@ -39,7 +39,6 @@ function input(string) {
         };
         setOperator(string);
     } else if (FUNCTIONS.includes(string)) {
-        alert(string);
         switch (string) {
             case "AC":
                 reset();
@@ -51,8 +50,10 @@ function input(string) {
                 addFloatingPoint();
                 break;
             case "=":
-                moveToNextNumber();
-                operate();
+                if (numbers.length >= 2 || (numbers.length >= 1 && displayNumber != "")){
+                    moveToNextNumber();
+                    operate();
+                }
                 break;
         };
     };
@@ -79,7 +80,13 @@ function updateDisplay() {
 
 function moveToNextNumber() {
     if (displayNumber != "") {
-        numbers.push(Number.parseInt(displayNumber));
+        let value = 0;
+        if (displayNumber.includes(".")) {
+            value = Number.parseFloat(displayNumber).toFixed(2);
+        } else {
+            value = Number.parseInt(displayNumber);
+        };
+        numbers.push(value);
         displayNumber = "";
     };
 };
@@ -96,8 +103,14 @@ function invertSignal() {
         displayNumber = "-" + displayNumber;
     } else {
         displayNumber = displayNumber.slice(1, displayNumber.length);
-    }
+    };
     updateDisplay();
+};
+
+function addFloatingPoint() {
+    if (!displayNumber.includes(".")) {
+        displayNumber += ".";
+    };
 };
 
 function operate() {
