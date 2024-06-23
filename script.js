@@ -161,11 +161,7 @@ function operate() {
             result = divide();
             break;
         case '%':
-            if (numbers[1] == 0) {
-                displayError();
-                return;
-            }
-            result = remainder()
+            result = percentage()
             break;
     };
     numbers = [result];
@@ -195,8 +191,8 @@ function divide() {
     return result;
 };
 
-function remainder() {
-    let result = numbers[0] % numbers[1];
+function percentage() {
+    let result = numbers[0] * (numbers[1] / 100);
     return result;
 };
 
