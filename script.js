@@ -16,18 +16,25 @@ document.querySelectorAll(".number").forEach((btn) => {
 document.querySelectorAll(".operator").forEach((btn) => {
     btn.addEventListener("click", () => {
         // Definir operador da equacao
-        // let btnOperator = btn.innerText;
-        // setOperator(btnOperator);
+        let btnOperator = btn.innerText;
+        setOperator(btnOperator);
     });
 });
 
-function addDigit(digit) {
-    if (!DIGITS.includes(digit)) {
+function addDigit(inputDigit) {
+    if (!DIGITS.includes(inputDigit)) {
         return;
     }
-    displayNumber += digit;
+    displayNumber += inputDigit;
     console.log(displayNumber);
     updateDisplay();
+}
+
+function setOperator(inputOperator) {
+    if (!OPERATORS.includes(inputOperator)) {
+        return;
+    }
+    operator = inputOperator;
 }
 
 function updateDisplay() {
