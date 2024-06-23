@@ -6,6 +6,19 @@ let operator = "";
 let displayNumber = "";
 const calculatorDisplay = document.querySelector(".display");
 
+document.addEventListener("keydown", (event) => {
+    let key = event.key;
+    console.log(key);
+    if (key == "Enter") {
+        key = "=";
+    } else if (key == "Backspace") {
+        key = "DEL";
+    } else if (key == "Delete") {
+        key = "AC";
+    };
+    input(key);
+});
+
 document.querySelectorAll(".number").forEach((btn) => {
     btn.addEventListener("click", () => {
         // Adicionar digito ao display
@@ -66,6 +79,9 @@ function addDigit(inputDigit) {
     if (!DIGITS.includes(inputDigit)) {
         return;
     };
+    if (numbers.length >= 1 && operator == "") {
+        reset();
+    }
     displayNumber += inputDigit;
     updateDisplay();
 };
@@ -123,6 +139,9 @@ function addFloatingPoint() {
 };
 
 function operate() {
+    if (numbers.length <= 1 || operator == "") {
+        return;
+    }
     let result;
     switch (operator) {
         case '+':
