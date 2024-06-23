@@ -23,8 +23,10 @@ document.querySelectorAll(".operator").forEach((btn) => {
 });
 
 document.querySelectorAll(".function").forEach((btn) => {
-    let btnFunction = btn.innerText;
-    input(btnFunction);
+    btn.addEventListener("click", () => {
+        let btnFunction = btn.innerText;
+        input(btnFunction);    
+    })
 })
 
 function input(string) {
@@ -37,6 +39,7 @@ function input(string) {
         }
         setOperator(string);
     } else if (FUNCTIONS.includes(string)) {
+        alert(string);
         switch (string) {
             case "AC":
                 reset();
@@ -50,6 +53,7 @@ function input(string) {
             case "=":
                 moveToNextNumber();
                 operate();
+                break;
         }
     }
 }
@@ -78,6 +82,13 @@ function moveToNextNumber() {
         numbers.push(Number.parseInt(displayNumber));
         displayNumber = "";
     }
+}
+
+function reset() {
+    displayNumber = "";
+    operator = "";
+    numbers = [];
+    updateDisplay();
 }
 
 function operate() {
